@@ -71,6 +71,8 @@ function App() {
       conversationRef.current = null;
     }
     setCallStatus('idle');
+    // Refetch data after call ends
+    fetchQueue();
   };
 
   // --- 3. Data Fetching Logic ---
