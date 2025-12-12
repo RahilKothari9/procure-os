@@ -71,12 +71,13 @@ function App() {
       conversationRef.current = null;
     }
     setCallStatus('idle');
-    // Refetch data after call ends
-    fetchQueue();
+    // Refetch data after call ends, but keep the same supplier selected
+    fetchQueue(true);
   };
 
   // --- 3. Data Fetching Logic ---
-  const fetchQueue = async () => {
+  const fetchQueue = async (preserveSelection = false) => {
+    const currentLeadId = activeLeadId;
     setStatus("SYNCING_DB...");
     
     // START MOCK DATA BLOCK (Use this for the Demo)
@@ -133,8 +134,11 @@ function App() {
       const res = await fetch(N8N_QUEUE_URL);
       const data = await res.json();
       setLeads(data);
-      const firstPending = data.find(l => l.status === 'Pending');
-      if (firstPending) setActiveLeadId(firstPending.lead_id);
+      // Only auto-select first pending if not preserving selection
+      if (!preserveSelection || !currentLeadId) {
+        const firstPending = data.find(l => l.status === 'Pending');
+        if (firstPending) setActiveLeadId(firstPending.lead_id);
+      }
       setStatus("ONLINE // READY");
     } catch (err) {
       console.error("n8n Connection Failed:", err);
