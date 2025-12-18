@@ -3,9 +3,9 @@ import { Conversation } from '@11labs/client';
 
 // --- CONFIGURATION ---
 // 1. Log into ElevenLabs > Agents to get your ID
-const AGENT_ID = "agent_1401kc6tk23bev8av16vpgykybhj"; 
+const AGENT_ID = import.meta.env.VITE_AGENT_ID; 
 // 2. Your n8n Webhook URL (Keep this variable even if using mock data for now)
-const N8N_QUEUE_URL = "https://minavkaria.app.n8n.cloud/webhook/get-next-lead"; 
+const N8N_QUEUE_URL = import.meta.env.VITE_N8N_QUEUE_URL; 
 
 function App() {
   const [leads, setLeads] = useState([]);
