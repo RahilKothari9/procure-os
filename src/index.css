@@ -13,7 +13,8 @@ body {
   background-color: #09090b;
   color: #e4e4e7;
   font-family: 'IBM Plex Mono', monospace;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* CRT Scanline Effect */
@@ -45,4 +46,23 @@ body {
 elevenlabs-convai {
   margin-top: 2rem;
   z-index: 20;
+}
+
+.supplier-scroll {
+  max-height: 420px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.supplier-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.supplier-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.supplier-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 69, 0, 0.4);
+  border-radius: 9999px;
 }
