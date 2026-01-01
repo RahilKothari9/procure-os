@@ -49,9 +49,13 @@ elevenlabs-convai {
 }
 
 .supplier-scroll {
+  flex: 1 1 auto;
   max-height: 420px;
+  height: min(420px, calc(100vh - 280px));
   overflow-y: auto;
   overscroll-behavior: contain;
+  padding-right: 0.25rem;
+  scroll-padding-bottom: 1rem;
 }
 
 .supplier-scroll::-webkit-scrollbar {
